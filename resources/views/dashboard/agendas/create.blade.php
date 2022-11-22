@@ -2,15 +2,16 @@
 
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2">Create new agenda</h1>
+  <h1 class="h2">Buat Agenda Baru</h1>
 </div>
 
 <div class="col-lg-8">
   <form method="post" action="{{ url('/dashboard/agendas') }}" class="mb-5">
     @csrf
     <div class="mb-3">
-      <label for="date" class="form-label">Tanggal</label>
-      <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" name="date" value="{{ old('date') }}" required autofocus>
+      <label for="date" class="form-label">Tanggal</label> <label class="text-danger fs-5 fw-bold">*</label>
+      <input type="date"  class="form-control @error('date') is-invalid @enderror" id="date" name="date" value="{{ old('date') }}" required autofocus>
+      {{-- <input class="form-control datepicker" name="tanggal_awal" id="input-tanggal-awal" placeholder="Tanggal Awal" type="text" data-date-format="dd-mm-yyyy" value="{{ old('tanggal_awal', now()->format('d-m-Y')) }}"> --}}
       @error('date')        
       <div class="invalid-feedback">
         {{ $message }}
@@ -18,7 +19,7 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="time" class="form-label">Jam</label>
+      <label for="time" class="form-label">Jam</label> <label class="text-danger fs-5 fw-bold">*</label>
       <input type="time" class="form-control @error('time') is-invalid @enderror" id="time" name="time" value="{{ old('time') }}" required>
       @error('time')        
       <div class="invalid-feedback">
@@ -27,8 +28,8 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="title" class="form-label">Kegiatan</label>
-      <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title') }}" required>
+      <label for="title" class="form-label">Kegiatan</label> <label class="text-danger fs-5 fw-bold">*</label>
+      <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title') }}"   required>
       @error('title')        
       <div class="invalid-feedback">
         {{ $message }}
@@ -36,8 +37,8 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="slug" class="form-label">Slug</label>
-      <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" value="{{ old('slug') }}" required>
+      <label for="slug" class="form-label" hidden>Slug</label>
+      <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" value="{{ old('slug') }}" hidden required>
       @error('slug')
         <div class="invalid-feedback">
           {{ $message }}
@@ -45,7 +46,7 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="type_id" class="form-label">Jenis Kegiatan</label>
+      <label for="type_id" class="form-label">Jenis Kegiatan</label> <label class="text-danger fs-5 fw-bold">*</label>
       <select class="form-select @error('type_id') is-invalid @enderror" name="type_id" required>
         <option selected disabled>--- Silahkan pilih ---</option>
         @foreach ($types as $type)
@@ -56,7 +57,7 @@
           @endif
         @endforeach       
       </select>
-      @error('type')
+      @error('type_id')
         <div class="invalid-feedback">
           {{ $message }}
         </div>
@@ -64,7 +65,7 @@
     </div>
     
     <div class="mb-3">
-      <label for="location" class="form-label">Tempat</label>
+      <label for="location" class="form-label">Tempat</label> <label class="text-danger fs-5 fw-bold">*</label>
       <input type="text" class="form-control @error('location') is-invalid @enderror" id="location" name="location" value="{{ old('location') }}" required>
       @error('location')        
       <div class="invalid-feedback">
@@ -73,7 +74,7 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="komponen" class="form-label">komponen Pengundang</label>
+      <label for="komponen" class="form-label">Komponen Pengundang</label> <label class="text-danger fs-5 fw-bold">*</label>
       <select class="form-select @error('komponen') is-invalid @enderror" name="komponen" required>
         <option selected disabled>--- Silahkan pilih ---</option>
         @foreach ($komponens as $komponen)
@@ -90,7 +91,7 @@
         </div>
       @enderror
     </div>
-    <div class="mb-3">
+    {{-- <div class="mb-3">
       <label for="staff_id" class="form-label">Kehadiran / Disposisi</label>
       <select class="form-select @error('staff_id') is-invalid @enderror" name="staff_id" required>
         <option selected disabled>--- Silahkan pilih ---</option>
@@ -107,9 +108,9 @@
           {{ $message }}
         </div>
       @enderror
-    </div>
+    </div> --}}
     
-    <div class="mb-3">
+    {{-- <div class="mb-3">
       <label for="description" class="form-label">Keterangan</label>
       <input type="text" class="form-control @error('description') is-invalid @enderror" id="description" name="description" value="{{ old('description') }}" required>
       @error('description')        
@@ -117,7 +118,7 @@
         {{ $message }}
       </div>
       @enderror
-    </div>
+    </div> --}}
 
 
     {{-- <div class="mb-3">
@@ -131,7 +132,8 @@
 
     
 
-    <button type="submit" class="btn btn-primary">Create Agenda</button>
+    <button type="submit" class="btn btn-primary">Simpan</button>
+    <a href="{{ url('/dashboard/agendas/') }}" class="btn btn-warning">Batal</a>
   </form>
 </div>
 

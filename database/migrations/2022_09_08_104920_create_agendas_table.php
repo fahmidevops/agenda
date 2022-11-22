@@ -16,7 +16,7 @@ class CreateAgendasTable extends Migration
         Schema::create('agendas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('staff_id');
+            $table->foreignId('staff_id')->nullable();
             $table->foreignId('type_id');
             $table->date('date');
             $table->time('time');

@@ -9,6 +9,8 @@ class Staff extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function agenda()
     {
         return $this->hasMany(Agenda::class);

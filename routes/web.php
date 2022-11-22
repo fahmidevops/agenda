@@ -7,13 +7,18 @@ use App\Models\Komponen;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AdminStaffController;
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminKomponenController;
+use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardAgendaController;
-use App\Http\Controllers\EmailController;
+use App\Http\Controllers\DashboardLapAgendaController;
+use App\Http\Controllers\FullCalendarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,15 +32,18 @@ use App\Http\Controllers\EmailController;
 */
 
 
-Route::get('/', function () {
-    return view('home', [
-        "title" => "Home",
-        "active" => "home"
+// Route::get('/', function () {
+//     return view('home', [
+//         "title" => "Home",
+//         "active" => "home"
 
-    ]);
-});
+//     ]);
+// });
 
-Route::get('/email', [EmailController::class, 'index']);
+
+
+
+// Route::get('/email', [EmailController::class, 'index']);
 
 Route::get('/about', [AboutController::class, 'index']);
 
@@ -43,6 +51,7 @@ Route::get('/posts', [PostController::class, 'index']);
 Route::get('/posts/{post:slug}', [PostController::class, 'show']); //halaman single post, kalau wildcard hanya {post} ini akan mencari id, tapi klo ingin yg di cari slug nya, maka tambahkan post:slug
 
 Route::get('/agenda', [AgendaController::class, 'index']);
+Route::get('/',  [AgendaController::class, 'home']);
 
 
 Route::get('/categories', function () {
@@ -60,6 +69,7 @@ Route::get('/komponen', function () {
         'komponens' => Komponen::all()
     ]);
 });
+
 
 
 // Route::get('/categories/{category:slug}', function (Category $category) {
@@ -83,14 +93,17 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store']);
+// Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+// Route::post('/register', [RegisterController::class, 'store']);
 
 // Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth'); // auth adalah midleware untuk user yg sudah login, halaman ini untuk user yang sudah login
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-})->middleware('auth'); // auth adalah midleware untuk user yg sudah login, halaman ini untuk user yang sudah login
+// Route::get('/dashboard', function () {
+//     return view('dashboard.index', [
+//         'coba' => 'satu hasilnya'
+//     ]);
+// })->middleware('auth'); // auth adalah midleware untuk user yg sudah login, halaman ini untuk user yang sudah login
 
+Route::get('/dashboard', [Dashboard::class, 'index'])->middleware('auth');
 
 Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
 Route::get('/dashboard/agendas/checkSlug', [DashboardAgendaController::class, 'checkSlug'])->middleware('auth');
@@ -99,3 +112,14 @@ Route::resource('/dashboard/posts', DashboardPostController::class)->middleware(
 Route::resource('/dashboard/agendas', DashboardAgendaController::class)->middleware('auth');
 
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin'); //except pengecualian, untuk method show tidak digunakan, sehingga lebih baik di nonaktifkan saja, dengan perintah except
+Route::resource('/dashboard/staff', AdminStaffController::class)->middleware('admin');
+// Route::resource('/dashboard/{staff}', AdminStaffController::class)->middleware('admin');
+Route::resource('/dashboard/komponen', AdminKomponenController::class)->middleware('admin');
+
+Route::get('/dashboard/reports_agendas', [DashboardLapAgendaController::class, 'index'])->middleware('auth');
+
+Route::get('/dashboard/reports_agendas/printpdf', [DashboardLapAgendaController::class, 'printpdf'])->middleware('auth');
+
+
+
+// Route::get('full-calendar', [FullCalendarController::class, 'index']);

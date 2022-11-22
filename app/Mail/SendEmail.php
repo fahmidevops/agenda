@@ -30,7 +30,7 @@ class SendEmail extends Mailable
     public function build()
     {
         return $this->from('siap.bkkbn@gmail.com')
-            ->subject('Anda mendapatkan undangan kegiatan baru')
+            ->subject('[Aplikasi siap.bkkbn.go.id] Anda mendapatkan undangan kegiatan baru')
             ->view('email');
     }
 }

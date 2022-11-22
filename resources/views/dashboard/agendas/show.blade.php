@@ -15,7 +15,7 @@
           </form>
       
           <article class="my-3 fs-5">
-              {!! $agenda->description !!}
+              {{ $agenda->description }}
           </article>
           
       </div>

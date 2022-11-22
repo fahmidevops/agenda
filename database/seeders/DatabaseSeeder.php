@@ -22,31 +22,26 @@ class DatabaseSeeder extends Seeder
     {
 
         User::create([
-            'komponen_id' => 1,
-            'name' => 'Fahmi',
-            'username' => 'fahmibo',
+            'komponen_id' => 20,
+            'name' => 'YUDI PERMANA, A.Md',
+            'username' => 'Yudi',
             'password' => bcrypt('password'),
-            'email' => 'fahmi@gmail.com',
-            'telp' => '085220753670',
+            'email' => 'yudi@gmail.com',
+            'telp' => null,
             'is_admin' => '1'
         ]);
 
-        // User::create([
-        //     'name' => 'Fitri',
-        //     'email' => 'fitri@gmail.com',
-        //     'password' => bcrypt('password')
-        // ]);
-        User::factory(5)->create();
+        User::create([
+            'komponen_id' => 20,
+            'name' => 'Dr. MAHYUZAR, M.Si.',
+            'username' => 'mahyuzar',
+            'password' => bcrypt('password'),
+            'email' => 'mahyuzar@gmail.com',
+            'telp' => null,
+            'is_admin' => '0'
+        ]);
 
-        Komponen::create([
-            'name' => 'DITTEKDA',
-        ]);
-        Komponen::create([
-            'name' => 'DITHANLAN',
-        ]);
-        Komponen::create([
-            'name' => 'BIRUMAS',
-        ]);
+
 
         Type::create([
             'name' => 'Undangan',
@@ -55,32 +50,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Program Rutin',
         ]);
 
-        Staff::create([
-            'komponen_id' => 1,
-            'name' => 'Mahyuzar M.Si',
-            'position' => 'Direktur',
-            'level' => '2',
-            'email' => 'mahyuzar@bkkbn.go.id',
-            'telp' => ''
-        ]);
 
-        Staff::create([
-            'komponen_id' => 2,
-            'name' => 'Baihaqi',
-            'position' => 'Pranata Komputer Ahli Madya',
-            'level' => '3',
-            'email' => 'tes@bkkbn.go.id',
-            'telp' => ''
-        ]);
-
-        Staff::create([
-            'komponen_id' => 3,
-            'name' => 'Rezky',
-            'position' => 'Pranata Komputer Ahli Madya',
-            'level' => '3',
-            'email' => 'tes2@bkkbn.go.id',
-            'telp' => ''
-        ]);
 
         // Category::create([
         //     'name' => 'Web Programming',
@@ -101,43 +71,219 @@ class DatabaseSeeder extends Seeder
 
         // Post::factory(20)->create();
         // Agenda::factory(20)->create();
-        Agenda::create([
-            'user_id' => 1,
-            'staff_id' => 1,
-            'type_id' => 1,
-            'date' => '2022-09-01',
-            'time' => '12:12',
-            'title' => 'Rapat percepatan penurunan stunting',
-            'slug' => 'Rapat-percepatan-penurunan-stunting',
-            'location' => 'hotel aston jakarta',
-            'komponen' => 'BIHUKOR',
-            'description' => 'Rapat penurunan stunting tahun 2022',
+
+
+        // Agenda::create([
+        //     'user_id' => 1,
+        //     'staff_id' => 1,
+        //     'type_id' => 1,
+        //     'date' => '2022-09-01',
+        //     'time' => '12:12',
+        //     'title' => 'Rapat percepatan penurunan stunting',
+        //     'slug' => 'Rapat-percepatan-penurunan-stunting',
+        //     'location' => 'hotel aston jakarta',
+        //     'komponen' => 'DITTEKDA',
+        //     'description' => 'Rapat penurunan stunting tahun 2022',
+        // ]);
+
+        // Agenda::create([
+        //     'user_id' => 2,
+        //     'staff_id' => 2,
+        //     'type_id' => 2,
+        //     'date' => '2022-09-01',
+        //     'time' => '12:12',
+        //     'title' => 'Rapat Dashboard PK',
+        //     'slug' => 'Rapat-Dashboard-PK',
+        //     'location' => 'hotel fave jakarta',
+        //     'komponen' => 'DITHANLAN',
+        //     'description' => 'Rapat penting',
+        // ]);
+
+        // Agenda::create([
+        //     'user_id' => 1,
+        //     'staff_id' => 3,
+        //     'type_id' => 1,
+        //     'date' => '2022-09-01',
+        //     'time' => '12:12',
+        //     'title' => 'Rapat TMP2K Kominfo',
+        //     'slug' => 'Rapat-TMP2K-Kominfo',
+        //     'location' => 'hotel bali jakarta',
+        //     'komponen' => 'BIRUMAS',
+        //     'description' => 'rapat tetap',
+        // ]);
+
+
+        Komponen::create([
+            'name' => 'BIHUKOR',
+        ]);
+        Komponen::create([
+            'name' => 'BIKUB',
+        ]);
+        Komponen::create([
+            'name' => 'BIREN',
+        ]);
+        Komponen::create([
+            'name' => 'BIRUMAS',
+        ]);
+        Komponen::create([
+            'name' => 'BSDM',
+        ]);
+        Komponen::create([
+            'name' => 'DITBALNAK',
+        ]);
+        Komponen::create([
+            'name' => 'DITDAMDUK',
+        ]);
+        Komponen::create([
+            'name' => 'DITHANLAN',
+        ]);
+        Komponen::create([
+            'name' => 'DITHANREM',
+        ]);
+        Komponen::create([
+            'name' => 'DITJAKDUK',
+        ]);
+        Komponen::create([
+            'name' => 'DITKESPRO',
+        ]);
+        Komponen::create([
+            'name' => 'DITKIE',
+        ]);
+        Komponen::create([
+            'name' => 'DITLAPTIK',
+        ]);
+        Komponen::create([
+            'name' => 'DITLINLAP',
+        ]);
+        Komponen::create([
+            'name' => 'DITPEMKON',
+        ]);
+        Komponen::create([
+            'name' => 'DITPENDUK',
+        ]);
+        Komponen::create([
+            'name' => 'DITRENDUK',
+        ]);
+        Komponen::create([
+            'name' => 'DITSESYAN',
+        ]);
+        Komponen::create([
+            'name' => 'DITTAS',
+        ]);
+        Komponen::create([
+            'name' => 'DITTEKDA',
+        ]);
+        Komponen::create([
+            'name' => 'DITVOGA',
+        ]);
+        Komponen::create([
+            'name' => 'DITYANSUS',
+        ]);
+        Komponen::create([
+            'name' => 'ITWIL I',
+        ]);
+        Komponen::create([
+            'name' => 'ITWIL II',
+        ]);
+        Komponen::create([
+            'name' => 'ITWIL III',
+        ]);
+        Komponen::create([
+            'name' => 'PULIN',
+        ]);
+        Komponen::create([
+            'name' => 'PUSDIKLAT',
+        ]);
+        Komponen::create([
+            'name' => 'PUSLITBANG KB&KS',
+        ]);
+        Komponen::create([
+            'name' => 'PUSLITBANG KEPENDUDUKAN',
+        ]);
+        Komponen::create([
+            'name' => 'TUWAS',
         ]);
 
-        Agenda::create([
-            'user_id' => 2,
-            'staff_id' => 2,
-            'type_id' => 2,
-            'date' => '2022-09-01',
-            'time' => '12:12',
-            'title' => 'Rapat Dashboard PK',
-            'slug' => 'Rapat-Dashboard-PK',
-            'location' => 'hotel fave jakarta',
-            'komponen' => 'BIRUM',
-            'description' => 'Rapat penting',
-        ]);
 
-        Agenda::create([
-            'user_id' => 1,
-            'staff_id' => 3,
-            'type_id' => 1,
-            'date' => '2022-09-01',
-            'time' => '12:12',
-            'title' => 'Rapat TMP2K Kominfo',
-            'slug' => 'Rapat-TMP2K-Kominfo',
-            'location' => 'hotel bali jakarta',
-            'komponen' => 'BIREN',
-            'description' => 'rapat tetap',
+        Staff::create([
+            'komponen_id' => 20,
+            'name' => 'Dr. MAHYUZAR, M.Si.',
+            'position' => 'DIREKTUR',
+            'level' => null,
+            'email' => null,
+            'telp' => null
+        ]);
+        Staff::create([
+            'komponen_id' => 20,
+            'name' => 'REZKY MURWANTO S.Kom., M.PH',
+            'position' => 'PRANATA KOMPUTER AHLI MADYA',
+            'level' => null,
+            'email' => null,
+            'telp' => null
+        ]);
+        Staff::create([
+            'komponen_id' => 20,
+            'name' => 'BAIHAQI NUR, S.IP., M.Si.',
+            'position' => 'PRANATA KOMPUTER AHLI MADYA',
+            'level' => null,
+            'email' => null,
+            'telp' => null
+        ]);
+        Staff::create([
+            'komponen_id' => 20,
+            'name' => 'RENI AZHAR, S.KM.',
+            'position' => 'PUSTAKAWAN AHLI MUDA',
+            'level' => null,
+            'email' => null,
+            'telp' => null
+        ]);
+        Staff::create([
+            'komponen_id' => 20,
+            'name' => 'RULIWATI DJAMALUDDIN, SE., M.Si.',
+            'position' => 'PRANATA KOMPUTER AHLI MUDA',
+            'level' => null,
+            'email' => null,
+            'telp' => null
+        ]);
+        Staff::create([
+            'komponen_id' => 20,
+            'name' => 'IIS SUPRIYANTI, S.Kom',
+            'position' => 'PRANATA KOMPUTER AHLI MUDA',
+            'level' => null,
+            'email' => null,
+            'telp' => null
+        ]);
+        Staff::create([
+            'komponen_id' => 20,
+            'name' => 'KHARISMA FITRIA PUSPA, ST',
+            'position' => 'PRANATA KOMPUTER AHLI MUDA',
+            'level' => null,
+            'email' => null,
+            'telp' => null
+        ]);
+        Staff::create([
+            'komponen_id' => 20,
+            'name' => 'MEDY KURNIAWAN, S.Kom., M.Kom',
+            'position' => 'PRANATA KOMPUTER AHLI MUDA',
+            'level' => null,
+            'email' => null,
+            'telp' => null
+        ]);
+        Staff::create([
+            'komponen_id' => 20,
+            'name' => 'FAJAR SIDDIQ, S.Kom.',
+            'position' => 'PRANATA KOMPUTER AHLI MUDA',
+            'level' => null,
+            'email' => null,
+            'telp' => null
+        ]);
+        Staff::create([
+            'komponen_id' => 20,
+            'name' => 'PEMBANGUNAN GULTOM, S.Kom.',
+            'position' => 'PRANATA KOMPUTER AHLI MUDA',
+            'level' => null,
+            'email' => null,
+            'telp' => null
         ]);
     }
 }

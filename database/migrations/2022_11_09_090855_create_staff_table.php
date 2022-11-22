@@ -17,8 +17,8 @@ class CreateStaffTable extends Migration
             $table->id();
             $table->foreignId('komponen_id');
             $table->string('name');
-            $table->string('position');
-            $table->string('level');
+            $table->string('position')->nullable();
+            $table->string('level')->nullable();
             $table->string('email')->nullable();
             $table->string('telp')->nullable();
             $table->boolean('status')->default(true);

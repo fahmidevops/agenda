@@ -13,45 +13,47 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Hari / Tanggal</th>
+                            <th>Hari, Tanggal</th>
                             <th>Jam</th>
                             <th>Kegiatan</th>
-                            <th>Tipe</th>
+                            <th>Jenis Kegiatan</th>
                             <th>Lokasi</th>
-                            <th>Unit Kerja Pengundang</th>
+                            <th>Komponen Pengundang</th>
                             <th>Dihadiri/Disposisi</th>
                             <th>Keterangan</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ( $agendas as $agenda )
-                        {{-- @dd($agenda->title) --}}
-                        <tr> 
-                            <td>{{ $loop->iteration }}</td>
-                            <td>
-                                @php
-                                    $date = date('d M Y', strtotime($agenda->date));
-                                    $day = date('D', strtotime($date));
-                                    $dayList = array(
-                                        'Sun' => 'Minggu', 
-                                        'Mon' => 'Senin', 
-                                        'Tue' => 'Selasa', 
-                                        'Wed' => 'Rabu', 
-                                        'Thu' => 'Kamis', 
-                                        'Fri' => 'Jumat', 
-                                        'Sat' => 'Sabtu'); 
-                                @endphp
-                                {{ $dayList[$day] .', '. $date }}
-                            </td>
-                            <td>{{ date('H:i', strtotime($agenda->time)) }}</td>
-                            <td>{{ $agenda->title }}</td>
-                            <td>{{ $agenda->type->name }}</td>
-                            <td>{{ $agenda->location }}</td>
-                            <td>{{ $agenda->komponen }}</td>
-                            <td>{{ $agenda->staff->name }}</td>
-                            <td>{{ $agenda->description }}</td>
-                        </tr>
-                        @endforeach
+                            @foreach ( $agendas as $agenda )
+                            {{-- @dd($agenda->title) --}}
+                            <tr> 
+                                <td>{{ $loop->iteration }}</td>
+                                <td>
+                                    @php
+                                        $date = date('d M Y', strtotime($agenda->date));
+                                        $day = date('D', strtotime($date));
+                                        $dayList = array(
+                                            'Sun' => 'Minggu', 
+                                            'Mon' => 'Senin', 
+                                            'Tue' => 'Selasa', 
+                                            'Wed' => 'Rabu', 
+                                            'Thu' => 'Kamis', 
+                                            'Fri' => 'Jumat', 
+                                            'Sat' => 'Sabtu'); 
+                                    @endphp
+                                    {{ $dayList[$day] .', '. $date }}
+                                </td>
+                                <td>{{ date('H:i', strtotime($agenda->time)) }}</td>
+                                <td>{{ $agenda->title }}</td>
+                                <td>{{ $agenda->type->name }}</td>
+                                <td>{{ $agenda->location }}</td>
+                                <td>{{ $agenda->komponen }}</td>
+                                <td>@isset($agenda->staff)
+                                    {{ $agenda->staff->name }}
+                                    @endisset</td>
+                                <td>{{ $agenda->description }}</td>
+                            </tr>
+                            @endforeach
                     </tbody>
                 </table>
             </div>

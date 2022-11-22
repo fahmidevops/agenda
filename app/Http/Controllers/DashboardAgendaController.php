@@ -23,8 +23,12 @@ class DashboardAgendaController extends Controller
     //menampilkan semua Post berdasarkan user tertentu
     public function index()
     {
+        // $agendas = Agenda::with(['type'])->get();
+        $date = date('Y-m-d', strtotime(now()));
+        $agendas = Agenda::with(['type', 'staff'])->where('date', '>=', $date)->orderBy('date', 'desc')->get();
+
         return view('dashboard.agendas.index', [
-            'agendas' => Agenda::all()
+            'agendas' => $agendas
         ]);
     }
 
@@ -37,9 +41,9 @@ class DashboardAgendaController extends Controller
     public function create()
     {
         return view('dashboard.agendas.create', [
-            'staffs' => Staff::all(),
-            'komponens' => Komponen::all(),
-            'types' => Type::all()
+            // 'staffs' => Staff::all(),
+            'komponens' => Komponen::orderBy('name', 'asc')->get(),
+            'types' => Type::orderBy('name', 'asc')->get()
         ]);
     }
 
@@ -52,6 +56,7 @@ class DashboardAgendaController extends Controller
     // menjalankan fungsi tambah yang diatas
     public function store(Request $request)
     {
+
         $validatedData = $request->validate([
             'date' => 'required',
             'time' => 'required',
@@ -60,26 +65,40 @@ class DashboardAgendaController extends Controller
             'type_id' => 'required',
             'location' => 'required',
             'komponen' => 'required',
-            'staff_id' => 'required',
-            'description' => 'required'
+            // 'staff_id' => '',
+            // 'description' => ''      
         ]);
+
 
         $validatedData['user_id'] = auth()->user()->id;
 
         // dd($validatedData);
         Agenda::create($validatedData);
 
-        $newEmail = [
-            'title' => $validatedData['title'],
-            'body' => 'Anda mendapatkan undangan kegiatan baru pada tanggal ' . $validatedData['date'] . ', harap lakukan pengecekan melalui aplikasi siap.bkkbn.go.id'
-        ];
-        $email = Staff::where('id', $request->staff_id)->get();
-        $to = $email[0]->email;
-        // $to = 'fmbo.cool@gmail.com';
 
-        Mail::to($to)->send(new SendEmail($newEmail));
+        // Kirim notifikasi email ini udah OK
+        $date = date('d M Y', strtotime($validatedData['date']));
+        $day = date('D', strtotime($date));
+        $dayList = array(
+            'Sun' => 'Minggu',
+            'Mon' => 'Senin',
+            'Tue' => 'Selasa',
+            'Wed' => 'Rabu',
+            'Thu' => 'Kamis',
+            'Fri' => 'Jumat',
+            'Sat' => 'Sabtu'
+        );
 
-        return redirect('/dashboard/agendas')->with('success', 'New Agenda has been added and notification by email has been sended!');
+        // $newEmail = [
+        //     'title' => $validatedData['title'],
+        //     'body' => 'Anda mendapatkan undangan kegiatan baru pada Hari ' . $dayList[$day] . ', ' . $date . ', harap lakukan pengecekan melalui aplikasi siap.bkkbn.go.id'
+        // ];
+
+        // $to = 'miftakhul.fahmi@bkkbn.go.id';
+
+        // Mail::to($to)->send(new SendEmail($newEmail));
+
+        return redirect('/dashboard/agendas')->with('success', 'Agenda baru berhasil ditambahkan dan email notifikasi sudah terkirim ke pimpinan!');
     }
 
     /**
@@ -105,8 +124,13 @@ class DashboardAgendaController extends Controller
     //menampilkan halaman ubah data
     public function edit(Agenda $agenda)
     {
+        // $staffs = Staff::orderBy('name', 'asc')->get();
+
         return view('dashboard.agendas.edit', [
             'agenda' => $agenda,
+            'staffs' => Staff::orderBy('name', 'asc')->get(),
+            'komponens' => Komponen::orderBy('name', 'asc')->get(),
+            'types' => Type::orderBy('name', 'asc')->get()
         ]);
     }
 
@@ -117,9 +141,88 @@ class DashboardAgendaController extends Controller
      * @param  \App\Models\Agenda  $agenda
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Agenda $agenda)
+
+    // halaman untuk proses perubahan datanya
+    public function update(Request $request, Agenda $agenda) //untuk halaman /dashboard/agendas dengan method put
     {
-        //
+        // dd($agenda);
+        // (!auth()->user()->is_admin)
+        if (!auth()->user()->is_admin) {
+            $rules = [
+                // 'date' => '',
+                // 'time' => '',
+                // 'title' => '',
+                // 'type_id' => '',
+                // 'location' => '',
+                // 'komponen' => '',
+                'staff_id' => '',
+                'description' => ''
+            ];
+        } else {
+            $rules = [
+                'date' => 'required',
+                'time' => 'required',
+                'title' => 'required|max:255',
+                'type_id' => 'required',
+                'location' => 'required',
+                'komponen' => 'required',
+                // 'description' => ''
+                // 'staff_id' => 'required',
+            ];
+
+            if ($request->slug != $agenda->slug) {
+                $rules['slug'] = 'required|unique:agendas';
+            }
+        }
+
+
+        $validatedData = $request->validate($rules);
+
+        $validatedData['user_id'] = auth()->user()->id;
+
+        Agenda::where('id', $agenda->id)
+            ->update($validatedData);
+
+        // if ((!auth()->user()->is_admin)) {
+        //     $newEmail = [
+        //         'title' => 'Kegiatan terbaru',
+        //         'body' => 'Anda mendapatkan kegiatan baru, harap melakukan pengecekan melalui aplikasi siap.bkkbn.go.id'
+        //     ];
+        //     $email = Staff::where('id', $request->staff_id)->get();
+        //     $to = $email[0]->email;
+
+        //     Mail::to($to)->send(new SendEmail($newEmail));
+        // }
+
+        return redirect('/dashboard/agendas')->with('success', 'Agenda berhasil diupdate!');
+
+
+
+        // data asli lamanya
+        // $rules = [
+        //     'date' => 'required',
+        //     'time' => 'required',
+        //     'title' => 'required|max:255',
+        //     'type_id' => 'required',
+        //     'location' => 'required',
+        //     'komponen' => 'required',
+        //     'staff_id' => 'required',
+        //     'description' => ''
+        // ];
+
+        // if ($request->slug != $agenda->slug) {
+        //     $rules['slug'] = 'required|unique:agendas';
+        // }
+
+        // $validatedData = $request->validate($rules);
+
+
+        // $validatedData['user_id'] = auth()->user()->id;
+
+        // Agenda::where('id', $agenda->id)
+        //     ->update($validatedData);
+
+        // return redirect('/dashboard/agendas')->with('success', 'Agenda has been updated!');
     }
 
     /**

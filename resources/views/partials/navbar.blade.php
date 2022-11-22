@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-        <a class="navbar-brand" href="#">NAVBAR</a>
+        <a href="/"><img src="img/LogoNavbar.png" width="100px" height="50px"></a>
+        {{-- <a class="navbar-brand" href="#">NAVBAR</a> --}}
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -9,21 +10,21 @@
                 <li class="nav-item">
                     <a class="nav-link {{ ($active === "home") ? "active" : "" }}" href="/">Home</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link  {{ ($active === "about") ? "active" : "" }}" href="/about">About</a>
-                </li>
-                <li class="nav-item">
+                </li> --}}
+                {{-- <li class="nav-item">
                     <a class="nav-link  {{ ($active === "posts") ? "active" : "" }}" href="/posts">Posts</a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link  {{ ($active === "agenda") ? "active" : "" }}" href="/agenda">Agenda</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link  {{ ($active === "categories") ? "active" : "" }}" href="/categories">Categories</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link  {{ ($active === "komponen") ? "active" : "" }}" href="/komponen">Komponen</a>
-                </li>
+                </li> --}}
             </ul>
 
             

@@ -13,6 +13,12 @@
     <!-- Custom styles for this template -->
     <link href="{{ url('/css/dashboard.css') }}" rel="stylesheet">
 
+    {{-- Bootstrap Icon --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+    <!-- Plugin CSS dataTables -->
+    <link href="{{ url('/libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
+
     {{-- Trix editor --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/trix.css') }}">
     <script type="text/javascript" src="{{ asset('/js/trix.js') }}"></script>
@@ -45,5 +51,13 @@
       <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
       
       <script src="{{ asset('/js/dashboard.js') }}"></script>
+
+      <!-- All Jquery -->
+    <script src="/libs/jquery/dist/jquery.min.js"></script> 
+
+    <!--This page plugins dataTable -->
+    <script src="/libs/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="/js/pages/datatable/custom-datatable.js"></script>
+    <script src="/js/pages/datatable/datatable-basic.init.js"></script>
   </body>
 </html>

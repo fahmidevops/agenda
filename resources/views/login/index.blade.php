@@ -54,9 +54,9 @@
         {{-- <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p> --}}
       </form>
 
-      <small class="d-block text-center mt-3">
+      {{-- <small class="d-block text-center mt-3">
         Not registered? <a href="/register" class="text-decoration-none">Register Now!</a>
-      </small>
+      </small> --}}
     </main>
   </div>
 </div>
