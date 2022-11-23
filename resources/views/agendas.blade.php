@@ -47,7 +47,7 @@
                                 <td>{{ $agenda->title }}</td>
                                 <td>{{ $agenda->type->name }}</td>
                                 <td>{{ $agenda->location }}</td>
-                                <td>{{ $agenda->komponen }}</td>
+                                <td>{{ $agenda->komponen->name }}</td>
                                 <td>@isset($agenda->staff)
                                     {{ $agenda->staff->name }}
                                     @endisset</td>

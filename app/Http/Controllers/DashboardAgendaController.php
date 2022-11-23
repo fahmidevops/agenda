@@ -64,7 +64,7 @@ class DashboardAgendaController extends Controller
             'slug' => 'required|unique:agendas', //untuk menjaga user edit slug, akan di cek kembali sdh ada atau belum data slugnya
             'type_id' => 'required',
             'location' => 'required',
-            'komponen' => 'required',
+            'komponen_id' => 'required',
             // 'staff_id' => '',
             // 'description' => ''      
         ]);
@@ -74,7 +74,6 @@ class DashboardAgendaController extends Controller
 
         // dd($validatedData);
         Agenda::create($validatedData);
-
 
         // Kirim notifikasi email ini udah OK
         $date = date('d M Y', strtotime($validatedData['date']));
@@ -89,14 +88,14 @@ class DashboardAgendaController extends Controller
             'Sat' => 'Sabtu'
         );
 
-        // $newEmail = [
-        //     'title' => $validatedData['title'],
-        //     'body' => 'Anda mendapatkan undangan kegiatan baru pada Hari ' . $dayList[$day] . ', ' . $date . ', harap lakukan pengecekan melalui aplikasi siap.bkkbn.go.id'
-        // ];
+        $newEmail = [
+            'title' => $validatedData['title'],
+            'body' => 'Anda mendapatkan undangan kegiatan baru pada Hari ' . $dayList[$day] . ', ' . $date . ', harap lakukan pengecekan melalui aplikasi siap.bkkbn.go.id'
+        ];
 
-        // $to = 'miftakhul.fahmi@bkkbn.go.id';
+        $to = 'miftakhul.fahmi@gmail.com';
 
-        // Mail::to($to)->send(new SendEmail($newEmail));
+        Mail::to($to)->send(new SendEmail($newEmail));
 
         return redirect('/dashboard/agendas')->with('success', 'Agenda baru berhasil ditambahkan dan email notifikasi sudah terkirim ke pimpinan!');
     }
@@ -145,7 +144,7 @@ class DashboardAgendaController extends Controller
     // halaman untuk proses perubahan datanya
     public function update(Request $request, Agenda $agenda) //untuk halaman /dashboard/agendas dengan method put
     {
-        // dd($agenda);
+        // dd($request);
         // (!auth()->user()->is_admin)
         if (!auth()->user()->is_admin) {
             $rules = [
@@ -165,7 +164,7 @@ class DashboardAgendaController extends Controller
                 'title' => 'required|max:255',
                 'type_id' => 'required',
                 'location' => 'required',
-                'komponen' => 'required',
+                'komponen_id' => 'required',
                 // 'description' => ''
                 // 'staff_id' => 'required',
             ];
@@ -183,16 +182,16 @@ class DashboardAgendaController extends Controller
         Agenda::where('id', $agenda->id)
             ->update($validatedData);
 
-        // if ((!auth()->user()->is_admin)) {
-        //     $newEmail = [
-        //         'title' => 'Kegiatan terbaru',
-        //         'body' => 'Anda mendapatkan kegiatan baru, harap melakukan pengecekan melalui aplikasi siap.bkkbn.go.id'
-        //     ];
-        //     $email = Staff::where('id', $request->staff_id)->get();
-        //     $to = $email[0]->email;
+        if ((!auth()->user()->is_admin)) {
+            $newEmail = [
+                'title' => 'Kegiatan terbaru',
+                'body' => 'Anda mendapatkan kegiatan baru, harap melakukan pengecekan melalui aplikasi siap.bkkbn.go.id'
+            ];
+            $email = Staff::where('id', $request->staff_id)->get();
+            $to = $email[0]->email;
 
-        //     Mail::to($to)->send(new SendEmail($newEmail));
-        // }
+            Mail::to($to)->send(new SendEmail($newEmail));
+        }
 
         return redirect('/dashboard/agendas')->with('success', 'Agenda berhasil diupdate!');
 

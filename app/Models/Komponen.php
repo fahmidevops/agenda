@@ -20,4 +20,9 @@ class Komponen extends Model
     {
         return $this->hasMany(Staff::class);
     }
+
+    public function agenda()
+    {
+        return $this->hasMany(Agenda::class);
+    }
 }

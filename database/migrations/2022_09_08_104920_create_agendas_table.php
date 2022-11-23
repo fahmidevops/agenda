@@ -18,12 +18,12 @@ class CreateAgendasTable extends Migration
             $table->foreignId('user_id');
             $table->foreignId('staff_id')->nullable();
             $table->foreignId('type_id');
+            $table->foreignId('komponen_id');
             $table->date('date');
             $table->time('time');
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('location')->nullable();
-            $table->string('komponen')->nullable();
             $table->string('description')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();

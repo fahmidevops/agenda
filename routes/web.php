@@ -111,10 +111,10 @@ Route::get('/dashboard/agendas/checkSlug', [DashboardAgendaController::class, 'c
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
 Route::resource('/dashboard/agendas', DashboardAgendaController::class)->middleware('auth');
 
-Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin'); //except pengecualian, untuk method show tidak digunakan, sehingga lebih baik di nonaktifkan saja, dengan perintah except
-Route::resource('/dashboard/staff', AdminStaffController::class)->middleware('admin');
+// Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin'); //except pengecualian, untuk method show tidak digunakan, sehingga lebih baik di nonaktifkan saja, dengan perintah except
+Route::resource('/dashboard/staff', AdminStaffController::class)->except(['show', 'destroy'])->middleware('admin');
 // Route::resource('/dashboard/{staff}', AdminStaffController::class)->middleware('admin');
-Route::resource('/dashboard/komponen', AdminKomponenController::class)->middleware('admin');
+Route::resource('/dashboard/komponen', AdminKomponenController::class)->except(['show', 'destroy'])->middleware('admin');
 
 Route::get('/dashboard/reports_agendas', [DashboardLapAgendaController::class, 'index'])->middleware('auth');
 

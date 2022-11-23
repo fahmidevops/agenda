@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link {{ ($active === "home") ? "active" : "" }}" href="/">Home</a>
+                    <a class="nav-link {{ ($active === "home") ? "active" : "" }}" href="/"><i class="bi bi-house"></i>Home</a>
                 </li>
                 {{-- <li class="nav-item">
                     <a class="nav-link  {{ ($active === "about") ? "active" : "" }}" href="/about">About</a>
@@ -17,7 +17,7 @@
                     <a class="nav-link  {{ ($active === "posts") ? "active" : "" }}" href="/posts">Posts</a>
                 </li> --}}
                 <li class="nav-item">
-                    <a class="nav-link  {{ ($active === "agenda") ? "active" : "" }}" href="/agenda">Agenda</a>
+                    <a class="nav-link  {{ ($active === "agenda") ? "active" : "" }}" href="/agenda"><i class="bi bi-list-check"></i>Agenda</a>
                 </li>
                 {{-- <li class="nav-item">
                     <a class="nav-link  {{ ($active === "categories") ? "active" : "" }}" href="/categories">Categories</a>
@@ -32,7 +32,7 @@
                 @auth
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Welcome back, {{ auth()->user()->name }}
+                        {{ auth()->user()->name }}
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-layout-text-sidebar-reverse"></i> My Dashboard</a></li>
@@ -47,9 +47,9 @@
                     </li>
                 @else
                    {{-- ini hanya muncul jika user belum login --}}
-                    <li class="nav-item">
-                        <a class="nav-link {{ ($active === "login") ? "active" : "" }}" href="/login" ><i class="bi bi-box-arrow-in-right"></i> Login</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ ($active === "login") ? "active" : "" }}" href="/login" ><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                        </li>
                 @endauth
             </ul>
         </div>

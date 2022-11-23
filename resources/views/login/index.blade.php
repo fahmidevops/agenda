@@ -26,9 +26,9 @@
       <form action="/login" method="post">
         @csrf
         {{-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> --}}
-        <div class="form-floating">
+        <div class="form-floating mb-2">
+        <label for="email">Email address</label>
           <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" value="{{ old('email') }}" required autofocus>
-          <label for="email">Email address</label>
           @error('email')
           <div class="invalid-feedback">
             {{ $message }}
@@ -36,8 +36,8 @@
           @enderror
         </div>
         <div class="form-floating">
-          <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password" required>
           <label for="password">Password</label>
+          <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password" required>
           @error('password')
           <div class="invalid-feedback">
             {{ $message }}

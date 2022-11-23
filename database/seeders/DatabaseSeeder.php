@@ -41,8 +41,6 @@ class DatabaseSeeder extends Seeder
             'is_admin' => '0'
         ]);
 
-
-
         Type::create([
             'name' => 'Undangan',
         ]);
@@ -77,12 +75,12 @@ class DatabaseSeeder extends Seeder
         //     'user_id' => 1,
         //     'staff_id' => 1,
         //     'type_id' => 1,
+        //     'komponen_id' => 3,
         //     'date' => '2022-09-01',
         //     'time' => '12:12',
         //     'title' => 'Rapat percepatan penurunan stunting',
         //     'slug' => 'Rapat-percepatan-penurunan-stunting',
         //     'location' => 'hotel aston jakarta',
-        //     'komponen' => 'DITTEKDA',
         //     'description' => 'Rapat penurunan stunting tahun 2022',
         // ]);
 
@@ -90,12 +88,12 @@ class DatabaseSeeder extends Seeder
         //     'user_id' => 2,
         //     'staff_id' => 2,
         //     'type_id' => 2,
+        //     'komponen_id' => 2,
         //     'date' => '2022-09-01',
         //     'time' => '12:12',
         //     'title' => 'Rapat Dashboard PK',
         //     'slug' => 'Rapat-Dashboard-PK',
         //     'location' => 'hotel fave jakarta',
-        //     'komponen' => 'DITHANLAN',
         //     'description' => 'Rapat penting',
         // ]);
 
@@ -103,12 +101,12 @@ class DatabaseSeeder extends Seeder
         //     'user_id' => 1,
         //     'staff_id' => 3,
         //     'type_id' => 1,
+        //     'komponen_id' => 1,
         //     'date' => '2022-09-01',
         //     'time' => '12:12',
         //     'title' => 'Rapat TMP2K Kominfo',
         //     'slug' => 'Rapat-TMP2K-Kominfo',
         //     'location' => 'hotel bali jakarta',
-        //     'komponen' => 'BIRUMAS',
         //     'description' => 'rapat tetap',
         // ]);
 
@@ -168,7 +166,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'DITSESYAN',
         ]);
         Komponen::create([
-            'name' => 'DITTAS',
+            'name' => 'DITAS',
         ]);
         Komponen::create([
             'name' => 'DITTEKDA',
@@ -195,10 +193,10 @@ class DatabaseSeeder extends Seeder
             'name' => 'PUSDIKLAT',
         ]);
         Komponen::create([
-            'name' => 'PUSLITBANG KB&KS',
+            'name' => 'PUSNA',
         ]);
         Komponen::create([
-            'name' => 'PUSLITBANG KEPENDUDUKAN',
+            'name' => 'PUSDU',
         ]);
         Komponen::create([
             'name' => 'TUWAS',

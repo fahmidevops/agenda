@@ -74,18 +74,18 @@
         @enderror
       </div>
       <div class="mb-3">
-        <label for="komponen" class="form-label">Komponen Pengundang</label>
-        <select class="form-select @error('komponen') is-invalid @enderror" name="komponen" disabled required>
+        <label for="komponen_id" class="form-label">Komponen Pengundang</label>
+        <select class="form-select @error('komponen_id') is-invalid @enderror" name="komponen_id" disabled required>
           <option selected disabled>--- Silahkan pilih ---</option>
           @foreach ($komponens as $komponen)
-            @if (old('komponen', $agenda->komponen) == $komponen->name)
-              <option value="{{ $komponen->name }}" selected>{{ $komponen->name }}</option>
+            @if (old('komponen_id', $agenda->komponen_id) == $komponen->id)
+              <option value="{{ $komponen->id }}" selected>{{ $komponen->name }}</option>
             @else
-              <option value="{{ $komponen->name }}">{{ $komponen->name }}</option>  
+              <option value="{{ $komponen->id }}">{{ $komponen->name }}</option>  
             @endif
           @endforeach       
         </select>
-        @error('komponen')
+        @error('komponen_id')
           <div class="invalid-feedback">
             {{ $message }}
           </div>
@@ -127,6 +127,7 @@
   </div>
 @endif
 
+{{-- ################################################################################################################################################################################# --}}
 
 @can('admin')
   <div class="col-lg-8">
@@ -197,18 +198,18 @@
         @enderror
       </div>
       <div class="mb-3">
-        <label for="komponen" class="form-label">Komponen Pengundang</label>
-        <select class="form-select @error('komponen') is-invalid @enderror" name="komponen" required>
+        <label for="komponen_id" class="form-label">Komponen Pengundang</label>
+        <select class="form-select @error('komponen_id') is-invalid @enderror" name="komponen_id" required>
           <option selected disabled>--- Silahkan pilih ---</option>
           @foreach ($komponens as $komponen)
-            @if (old('komponen', $agenda->komponen) == $komponen->name)
-              <option value="{{ $komponen->name }}" selected>{{ $komponen->name }}</option>
+            @if (old('komponen_id', $agenda->komponen_id) == $komponen->id)
+              <option value="{{ $komponen->id }}" selected>{{ $komponen->name }}</option>
             @else
-              <option value="{{ $komponen->name }}">{{ $komponen->name }}</option>  
+              <option value="{{ $komponen->id }}">{{ $komponen->name }}</option>  
             @endif
           @endforeach       
         </select>
-        @error('komponen')
+        @error('komponen_id')
           <div class="invalid-feedback">
             {{ $message }}
           </div>
