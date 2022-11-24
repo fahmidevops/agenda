@@ -119,7 +119,3 @@ Route::resource('/dashboard/komponen', AdminKomponenController::class)->except([
 Route::get('/dashboard/reports_agendas', [DashboardLapAgendaController::class, 'index'])->middleware('auth');
 
 Route::get('/dashboard/reports_agendas/printpdf', [DashboardLapAgendaController::class, 'printpdf'])->middleware('auth');
-
-
-
-// Route::get('full-calendar', [FullCalendarController::class, 'index']);
