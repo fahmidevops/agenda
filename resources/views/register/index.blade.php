@@ -7,7 +7,7 @@
     <main class="form-registration w-100 m-auto">
       <h1 class="h3 mb-3 fw-normal text-center">Registration form</h1>
       
-      <form action="/register" method="post">
+      <form action="{{ url('/register') }}" method="post">
         @csrf {{-- @csrf -> mengatasi error 419 | page expired (menangani request yang berasal dari website lain) --}}
         {{-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> --}}
         <div class="form-floating">
@@ -57,7 +57,7 @@
       </form>
 
       <small class="d-block text-center mt-3">
-        Allready registered? <a href="/login" class="text-decoration-none">Login Now!</a>
+        Allready registered? <a href="{{ url('/login') }}" class="text-decoration-none">Login Now!</a>
       </small>
     </main>
   </div>

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-        <a href="/"><img src="img/LogoNavbar.png" width="100px" height="50px"></a>
+        <a href="{{ url('/') }}"><img src="{{ url('img/LogoNavbar.png') }}" width="100px" height="50px"></a>
         {{-- <a class="navbar-brand" href="#">NAVBAR</a> --}}
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link {{ ($active === "home") ? "active" : "" }}" href="/"><i class="bi bi-house"></i>Home</a>
+                    <a class="nav-link {{ ($active === "home") ? "active" : "" }}" href="{{ url('/') }}"><i class="bi bi-house"></i>Home</a>
                 </li>
                 {{-- <li class="nav-item">
                     <a class="nav-link  {{ ($active === "about") ? "active" : "" }}" href="/about">About</a>
@@ -17,7 +17,7 @@
                     <a class="nav-link  {{ ($active === "posts") ? "active" : "" }}" href="/posts">Posts</a>
                 </li> --}}
                 <li class="nav-item">
-                    <a class="nav-link  {{ ($active === "agenda") ? "active" : "" }}" href="/agenda"><i class="bi bi-list-check"></i>Agenda</a>
+                    <a class="nav-link  {{ ($active === "agenda") ? "active" : "" }}" href="{{ url('/agenda') }}"><i class="bi bi-list-check"></i>Agenda</a>
                 </li>
                 {{-- <li class="nav-item">
                     <a class="nav-link  {{ ($active === "categories") ? "active" : "" }}" href="/categories">Categories</a>
@@ -35,10 +35,10 @@
                         {{ auth()->user()->name }}
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-layout-text-sidebar-reverse"></i> My Dashboard</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/dashboard') }}"><i class="bi bi-layout-text-sidebar-reverse"></i> My Dashboard</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
-                                <form action="/logout" method="post">
+                                <form action="{{ url('/logout') }}" method="post">
                                     @csrf
                                     <button type="submit" class="dropdown-item"> <i class="bi bi-box-arrow-in-right"></i> Logout</button>
                                 </form>
@@ -48,7 +48,7 @@
                 @else
                    {{-- ini hanya muncul jika user belum login --}}
                         <li class="nav-item">
-                            <a class="nav-link {{ ($active === "login") ? "active" : "" }}" href="/login" ><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                            <a class="nav-link {{ ($active === "login") ? "active" : "" }}" href="{{ url('/login') }}" ><i class="bi bi-box-arrow-in-right"></i> Login</a>
                         </li>
                 @endauth
             </ul>

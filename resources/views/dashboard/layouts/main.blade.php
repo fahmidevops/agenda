@@ -11,13 +11,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">  
    
     <!-- Custom styles for this template -->
-    <link href="{{ url('/css/dashboard.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/dashboard.css') }}" rel="stylesheet">
 
     {{-- Bootstrap Icon --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
     <!-- Plugin CSS dataTables -->
-    <link href="{{ url('/libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
+    <link href="{{ asset('/libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
 
     {{-- Trix editor --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/trix.css') }}">
@@ -53,11 +53,11 @@
       <script src="{{ asset('/js/dashboard.js') }}"></script>
 
       <!-- All Jquery -->
-    <script src="/libs/jquery/dist/jquery.min.js"></script> 
+    <script src="{{ asset('/libs/jquery/dist/jquery.min.js') }}"></script> 
 
     <!--This page plugins dataTable -->
-    <script src="/libs/datatables/media/js/jquery.dataTables.min.js"></script>
-    <script src="/js/pages/datatable/custom-datatable.js"></script>
-    <script src="/js/pages/datatable/datatable-basic.init.js"></script>
+    <script src="{{ asset('/libs/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('/js/pages/datatable/custom-datatable.js') }}"></script>
+    <script src="{{ asset('/js/pages/datatable/datatable-basic.init.js') }}"></script>
   </body>
 </html>

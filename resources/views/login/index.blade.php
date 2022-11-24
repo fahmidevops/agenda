@@ -23,7 +23,7 @@
     <main class="form-signin w-100 m-auto">
       <h1 class="h3 mb-3 fw-normal text-center">Please login</h1>
       
-      <form action="/login" method="post">
+      <form action="{{ url('/login') }}" method="post">
         @csrf
         {{-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> --}}
         <div class="form-floating mb-2">
