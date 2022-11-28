@@ -88,9 +88,17 @@ class DashboardAgendaController extends Controller
             'Sat' => 'Sabtu'
         );
 
+        $day = $dayList[$day] . ', ' . $date;
+
+        $time = date('H:i', strtotime($validatedData['time']));
+
         $newEmail = [
             'title' => $validatedData['title'],
-            'body' => 'Anda mendapatkan undangan kegiatan baru pada Hari ' . $dayList[$day] . ', ' . $date . ', harap lakukan pengecekan melalui aplikasi siap.bkkbn.go.id'
+            'date' => $day,
+            'time' => $time,
+            'location' => $validatedData['location'],
+            'body' => 'Anda mendapatkan undangan kegiatan baru :',
+            'footer' => 'Mohon untuk mengisi daftar kehadiran atau mendisposisikan kegiatan dengan login terlebih dahulu melalui aplikasi siap.bkkbn.go.id'
         ];
 
         $to = 'miftakhul.fahmi@gmail.com';
@@ -182,18 +190,50 @@ class DashboardAgendaController extends Controller
         Agenda::where('id', $agenda->id)
             ->update($validatedData);
 
+
+
         if ((!auth()->user()->is_admin)) {
+            $agendas = Agenda::where('id', $agenda->id)->get();
+
+            $date = date('d M Y', strtotime($agendas[0]->date));
+            $day = date('D', strtotime($date));
+            $dayList = array(
+                'Sun' => 'Minggu',
+                'Mon' => 'Senin',
+                'Tue' => 'Selasa',
+                'Wed' => 'Rabu',
+                'Thu' => 'Kamis',
+                'Fri' => 'Jumat',
+                'Sat' => 'Sabtu'
+            );
+
+            $day = $dayList[$day] . ', ' . $date;
+
+            $title = $agendas[0]->title;
+            $date = $day;
+            $time = date('H:i', strtotime($agendas[0]->time));
+            $location = $agendas[0]->location;
+
+
+            // Kirim notifikasi email ini udah OK
+
             $newEmail = [
-                'title' => 'Kegiatan terbaru',
-                'body' => 'Anda mendapatkan kegiatan baru, harap melakukan pengecekan melalui aplikasi siap.bkkbn.go.id'
+                'title' => $title,
+                'date' => $date,
+                'time' => $time,
+                'location' => $location,
+                'body' => 'Anda mendapatkan undangan kegiatan baru :',
+                'footer' => 'Daftar kegiatan bisa diakses melalui aplikasi siap.bkkbn.go.id'
             ];
+
+            // dd($agendas);
             $email = Staff::where('id', $request->staff_id)->get();
             $to = $email[0]->email;
 
             Mail::to($to)->send(new SendEmail($newEmail));
         }
 
-        return redirect('/dashboard/agendas')->with('success', 'Agenda berhasil diupdate!');
+        return redirect('/dashboard/agendas')->with('success', 'Agenda kegiatan berhasil diupdate!');
 
 
 

@@ -9,7 +9,8 @@
             {{-- <h4 class="card-title">Table Responsive </h4>
             <h6 class="card-subtitle">Data table example</h6> --}}
             <div class="table-responsive m-t-40">
-                <table id="config-table" class="table display table-bordered table-striped no-wrap">
+                {{-- table no-wrap --}}
+                <table id="config-table" class="table display table-bordered table-striped"> 
                     <thead>
                         <tr>
                             <th>#</th>

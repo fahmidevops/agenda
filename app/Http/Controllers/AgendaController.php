@@ -14,7 +14,7 @@ class AgendaController extends Controller
         $agendas = Agenda::with(['type', 'staff'])->where('date', '>=', $date)->orderBy('date', 'asc')->get();
 
         return view('agendas', [
-            'title' => 'Agenda Pimpinan',
+            'title' => 'Sistem Informasi Agenda Pimpinan',
             'active' => 'agenda',
             'agendas' => $agendas
         ]);

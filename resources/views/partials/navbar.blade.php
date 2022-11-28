@@ -1,15 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container">
-        <a href="{{ url('/') }}"><img src="{{ url('img/LogoNavbar.png') }}" width="100px" height="50px"></a>
-        {{-- <a class="navbar-brand" href="#">NAVBAR</a> --}}
+    <a href="{{ url('/') }}"><img src="{{ url('img/LogoNavbar.png') }}" width="110px" height="50px"></a>
+    {{-- <div class="container"> --}}
+    <div>
+    {{-- <a class="navbar-brand" href="#">NAVBAR</a> --}}
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link {{ ($active === "home") ? "active" : "" }}" href="{{ url('/') }}"><i class="bi bi-house"></i>Home</a>
-                </li>
+                </li> --}}
                 {{-- <li class="nav-item">
                     <a class="nav-link  {{ ($active === "about") ? "active" : "" }}" href="/about">About</a>
                 </li> --}}
@@ -17,7 +18,7 @@
                     <a class="nav-link  {{ ($active === "posts") ? "active" : "" }}" href="/posts">Posts</a>
                 </li> --}}
                 <li class="nav-item">
-                    <a class="nav-link  {{ ($active === "agenda") ? "active" : "" }}" href="{{ url('/agenda') }}"><i class="bi bi-list-check"></i>Agenda</a>
+                    <a class="nav-link  {{ ($active === "agenda") ? "active" : "" }}" href="{{ url('/') }}"><i class="bi bi-list-check"></i>Agenda</a>
                 </li>
                 {{-- <li class="nav-item">
                     <a class="nav-link  {{ ($active === "categories") ? "active" : "" }}" href="/categories">Categories</a>

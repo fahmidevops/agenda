@@ -14,14 +14,15 @@
     {{-- Bootstrap Icon --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
-    {{-- My Style --}}
-    {{-- <link rel="stylesheet" href="/css/style.css"> --}}
-
+    
 	{{-- <link rel="canonical" href="https://www.wrappixel.com/templates/adminpro/" /> --}}
-
+    
     <!-- Custom CSS adminpro -->
     {{-- <link href="/css/style.min.css" rel="stylesheet"> --}}
     <link href="{{ asset('/css/style.min.css') }}" rel="stylesheet">
+    
+    {{-- My Style --}}
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 
     <!-- Plugin CSS dataTables -->
     <link href="{{ asset('/libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
@@ -44,7 +45,9 @@
 
     @include('partials.navbar')
 
-    <div class="container mt-4">
+    <div class="container mt-2">
+    </div>
+    <div>
         @yield('container')
     </div>
 

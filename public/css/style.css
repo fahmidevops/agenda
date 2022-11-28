@@ -23,3 +23,7 @@
     border-radius: 0;
     margin-bottom: -1px;
   }
+
+  /* .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: #6c9af0;
+ } */

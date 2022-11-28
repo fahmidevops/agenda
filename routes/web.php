@@ -50,25 +50,25 @@ Route::get('/about', [AboutController::class, 'index']);
 Route::get('/posts', [PostController::class, 'index']);
 Route::get('/posts/{post:slug}', [PostController::class, 'show']); //halaman single post, kalau wildcard hanya {post} ini akan mencari id, tapi klo ingin yg di cari slug nya, maka tambahkan post:slug
 
-Route::get('/agenda', [AgendaController::class, 'index']);
-Route::get('/',  [AgendaController::class, 'home']);
+Route::get('/', [AgendaController::class, 'index']);
+// Route::get('/',  [AgendaController::class, 'home']);
 
 
-Route::get('/categories', function () {
-    return view('categories', [
-        'title' => 'Post Categories',
-        "active" => "categories",
-        'categories' => Category::all()
-    ]);
-});
+// Route::get('/categories', function () {
+//     return view('categories', [
+//         'title' => 'Post Categories',
+//         "active" => "categories",
+//         'categories' => Category::all()
+//     ]);
+// });
 
-Route::get('/komponen', function () {
-    return view('komponens', [
-        'title' => 'Komponen',
-        'active' => 'komponen',
-        'komponens' => Komponen::all()
-    ]);
-});
+// Route::get('/komponen', function () {
+//     return view('komponens', [
+//         'title' => 'Komponen',
+//         'active' => 'komponen',
+//         'komponens' => Komponen::all()
+//     ]);
+// });
 
 
 
