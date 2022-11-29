@@ -37,5 +37,9 @@ class AppServiceProvider extends ServiceProvider
             // return $user->username === 'fahmibo';
             return $user->is_admin; // ini bernilai true atau bernilai 1 di databasenya. 
         });
+		
+		if(config('app.env') === 'production') {
+            \URL::forceScheme('https');
+        }
     }
 }
