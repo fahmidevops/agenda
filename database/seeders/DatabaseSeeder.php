@@ -25,8 +25,8 @@ class DatabaseSeeder extends Seeder
             'komponen_id' => 20,
             'name' => 'YUDI PERMANA, A.Md',
             'username' => 'Yudi',
-            'password' => bcrypt('password'),
-            'email' => 'yudi@gmail.com',
+            'password' => bcrypt('yudi@1234'),
+            'email' => 'yudi.permana@bkkbn.go.id',
             'telp' => null,
             'is_admin' => '1'
         ]);
@@ -35,8 +35,8 @@ class DatabaseSeeder extends Seeder
             'komponen_id' => 20,
             'name' => 'Dr. MAHYUZAR, M.Si.',
             'username' => 'mahyuzar',
-            'password' => bcrypt('password'),
-            'email' => 'mahyuzar@gmail.com',
+            'password' => bcrypt('mahyuzar@1234'),
+            'email' => 'mahyuzar@bkkbn.go.id',
             'telp' => null,
             'is_admin' => '0'
         ]);
@@ -208,7 +208,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Dr. MAHYUZAR, M.Si.',
             'position' => 'DIREKTUR',
             'level' => null,
-            'email' => null,
+            'email' => 'mahyuzar@bkkbn.go.id',
             'telp' => null
         ]);
         Staff::create([
@@ -216,7 +216,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'REZKY MURWANTO S.Kom., M.PH',
             'position' => 'PRANATA KOMPUTER AHLI MADYA',
             'level' => null,
-            'email' => null,
+            'email' => 'rezky_m@bkkbn.go.id',
             'telp' => null
         ]);
         Staff::create([
@@ -224,7 +224,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'BAIHAQI NUR, S.IP., M.Si.',
             'position' => 'PRANATA KOMPUTER AHLI MADYA',
             'level' => null,
-            'email' => null,
+            'email' => 'baihaqi.nur@bkkbn.go.id',
             'telp' => null
         ]);
         Staff::create([
@@ -232,7 +232,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'RENI AZHAR, S.KM.',
             'position' => 'PUSTAKAWAN AHLI MUDA',
             'level' => null,
-            'email' => null,
+            'email' => 'r.azhar@bkkbn.go.id',
             'telp' => null
         ]);
         Staff::create([
@@ -240,7 +240,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'RULIWATI DJAMALUDDIN, SE., M.Si.',
             'position' => 'PRANATA KOMPUTER AHLI MUDA',
             'level' => null,
-            'email' => null,
+            'email' => 'ruliwati.dj@bkkbn.go.id',
             'telp' => null
         ]);
         Staff::create([
@@ -248,7 +248,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'IIS SUPRIYANTI, S.Kom',
             'position' => 'PRANATA KOMPUTER AHLI MUDA',
             'level' => null,
-            'email' => null,
+            'email' => 'iis_supriyanti@bkkbn.go.id',
             'telp' => null
         ]);
         Staff::create([
@@ -256,7 +256,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'KHARISMA FITRIA PUSPA, ST',
             'position' => 'PRANATA KOMPUTER AHLI MUDA',
             'level' => null,
-            'email' => null,
+            'email' => 'kharisma_fp@bkkbn.go.id',
             'telp' => null
         ]);
         Staff::create([
@@ -264,7 +264,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'MEDY KURNIAWAN, S.Kom., M.Kom',
             'position' => 'PRANATA KOMPUTER AHLI MUDA',
             'level' => null,
-            'email' => null,
+            'email' => 'medy.kurniawan@bkkbn.go.id',
             'telp' => null
         ]);
         Staff::create([
@@ -272,7 +272,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'FAJAR SIDDIQ, S.Kom.',
             'position' => 'PRANATA KOMPUTER AHLI MUDA',
             'level' => null,
-            'email' => null,
+            'email' => 'fajar.siddiq@bkkbn.go.id',
             'telp' => null
         ]);
         Staff::create([
@@ -280,7 +280,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'PEMBANGUNAN GULTOM, S.Kom.',
             'position' => 'PRANATA KOMPUTER AHLI MUDA',
             'level' => null,
-            'email' => null,
+            'email' => 'pembangunan@bkkbn.go.id',
             'telp' => null
         ]);
     }
